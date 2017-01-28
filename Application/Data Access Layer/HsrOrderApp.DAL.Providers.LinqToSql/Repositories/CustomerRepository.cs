@@ -60,6 +60,7 @@ namespace HsrOrderApp.DAL.Providers.LinqToSql.Repositories
                 dbCustomer.Version = customer.Version.ToTimestamp();
                 dbCustomer.Name = customer.Name;
                 dbCustomer.FirstName = customer.FirstName;
+                dbCustomer.Title = customer.Title;
 
                 if (isNew)
                     db.Customers.InsertOnSubmit(dbCustomer);

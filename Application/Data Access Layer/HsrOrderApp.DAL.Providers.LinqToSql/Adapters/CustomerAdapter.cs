@@ -23,6 +23,7 @@ namespace HsrOrderApp.DAL.Providers.LinqToSql.Adapters
                                                        Name = c.Name,
                                                        FirstName = c.FirstName,
                                                        Version = c.Version.ToUlong(),
+                                                       Title = c.Title,
                                                    };
             if (user == null && c.User != null)
                 customer.User = SecurityAdapter.AdaptUser(c.User.FirstOrDefault(), customer);

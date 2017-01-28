@@ -42,7 +42,7 @@ namespace HsrOrderApp.Test.BL.Services.DtoAdapters
         [TestMethod]
         public void TestCustomersToDtos()
         {
-            Customer customer = new Customer() {CustomerId = 1, Name = "FakeUserName", FirstName = "FakeFirstName", Version = 0};
+            Customer customer = new Customer() {CustomerId = 1, Name = "FakeUserName", FirstName = "FakeFirstName", Version = 0, Title = "Herr"};
             Order order1 = new Order() {OrderId = 1, OrderStatus = OrderStatus.Draft};
             Order order2 = new Order() {OrderId = 2, OrderStatus = OrderStatus.Ordered};
             customer.Orders = new List<Order>() {order1, order2}.AsQueryable();

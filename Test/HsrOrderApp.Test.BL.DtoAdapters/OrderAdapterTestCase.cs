@@ -42,7 +42,7 @@ namespace HsrOrderApp.Test.BL.Services.DtoAdapters
         [TestMethod]
         public void TestOrdersToDtos()
         {
-            Customer customer = new Customer() {CustomerId = 213, FirstName = "FakeFirstName", Name = "FakeName"};
+            Customer customer = new Customer() {CustomerId = 213, FirstName = "FakeFirstName", Name = "FakeName", Title = "Herr"};
             Order order = new Order() {OrderId = 1, OrderStatus = OrderStatus.Ordered, OrderDate = DateTime.Now, ShippedDate = null, Customer = customer, Version = 0};
             Assert.AreEqual(true, order.IsValid);
 
@@ -63,7 +63,7 @@ namespace HsrOrderApp.Test.BL.Services.DtoAdapters
         [TestMethod]
         public void TestOrderToDto()
         {
-            Customer customer = new Customer() {CustomerId = 1, Name = "FakeUserName", FirstName = "FakeFirstName", Version = 0};
+            Customer customer = new Customer() {CustomerId = 1, Name = "FakeUserName", FirstName = "FakeFirstName", Version = 0, Title = "Herr"};
             Order order = new Order() {OrderId = 1, OrderStatus = OrderStatus.Ordered, OrderDate = DateTime.Now, ShippedDate = null, Customer = customer, Version = 0};
 
             OrderDetail detail = new OrderDetail() {OrderDetailId = 1, Order = order, QuantityInUnits = 123, UnitPrice = 213.43m, Version = 0};

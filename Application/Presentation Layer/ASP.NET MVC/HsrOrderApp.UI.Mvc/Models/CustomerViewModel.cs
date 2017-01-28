@@ -34,14 +34,15 @@ namespace HsrOrderApp.UI.Mvc.Models
                 _addresses = value;
                 Model.Addresses = _addresses.Items;
             }
-        }
+        } 
 
         public void ApplyFormAttributes(CustomerDTO source)
         {
             Mapper.CreateMap<CustomerDTO, CustomerDTO>().ForAllMembers(opt => opt.Ignore());
             Mapper.CreateMap<CustomerDTO, CustomerDTO>()
                 .ForMember(dest => dest.FirstName, map => map.MapFrom(src => src.FirstName))
-                .ForMember(dest => dest.Name, map => map.MapFrom(src => src.Name));
+                .ForMember(dest => dest.Name, map => map.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Title, map => map.MapFrom(src => src.Title));
 
             Mapper.Map(source, Model);
         }

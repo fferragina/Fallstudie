@@ -24,6 +24,7 @@ namespace HsrOrderApp.BL.DtoAdapters
                                                                       Id = c.CustomerId,
                                                                       Name = c.Name,
                                                                       FirstName = c.FirstName,
+                                                                      Title = c.Title,
                                                                       NumberOfTotalOrders = GetNumberOfOrdersOfCustomer(c, false),
                                                                       NumberOfOpenOrders = GetNumberOfOrdersOfCustomer(c, true),
                                                                   };
@@ -38,7 +39,8 @@ namespace HsrOrderApp.BL.DtoAdapters
                                       Name = c.Name,
                                       FirstName = c.FirstName,
                                       Version = c.Version,
-                                      Addresses = AddressAdapter.AddressToDtos(c.Addresses)
+                                      Addresses = AddressAdapter.AddressToDtos(c.Addresses),
+                                      Title = c.Title
                                   };
 
             return dto;
@@ -72,7 +74,8 @@ namespace HsrOrderApp.BL.DtoAdapters
                                         CustomerId = dto.Id,
                                         Name = dto.Name,
                                         FirstName = dto.FirstName,
-                                        Version = dto.Version
+                                        Version = dto.Version,
+                                        Title = dto.Title
                                     };
             ValidationHelper.Validate(customer);
             return customer;

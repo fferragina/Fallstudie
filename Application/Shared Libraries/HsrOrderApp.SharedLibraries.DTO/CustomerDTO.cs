@@ -15,12 +15,14 @@ namespace HsrOrderApp.SharedLibraries.DTO
         private IList<AddressDTO> _addresses;
         private string _firstName;
         private string _name;
+        private string _title;
 
         public CustomerDTO()
         {
             this.Name = string.Empty;
             this.FirstName = string.Empty;
             this.Addresses = new List<AddressDTO>();
+            this.Title = string.Empty;
         }
 
         [DataMember]
@@ -65,6 +67,19 @@ namespace HsrOrderApp.SharedLibraries.DTO
                     this._addresses = value;
                     OnPropertyChanged(() => Addresses);
                 }
+            }
+        }
+
+        [DataMember]
+        [StringLengthValidator(1, 10)]
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                if (value != _title)
+                    this._title = value;
+                OnPropertyChanged(() => Title);
             }
         }
     }

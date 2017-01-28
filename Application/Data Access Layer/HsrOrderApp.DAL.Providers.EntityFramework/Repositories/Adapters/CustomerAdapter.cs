@@ -35,6 +35,7 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories.Adapters
                                                        Name = c.Name,
                                                        FirstName = c.FirstName,
                                                        Version = c.Version.ToUlong(),
+                                                       Title =c.Title,
                                                    };
             if (user == null)
                 customer.User = SecurityAdapter.AdaptUser(c.UserReference);

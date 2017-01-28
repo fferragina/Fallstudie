@@ -72,6 +72,7 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="FirstName" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
       <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar (10)" CanBeNull="false" />
       <Association Name="Customer_Order" Member="Orders" ThisKey="CustomerId" OtherKey="CustomerId" Type="Order" />
       <Association Name="Customer_User" Member="User" ThisKey="CustomerId" OtherKey="CustomerId" Type="User" />
       <Association Name="Customer_CustomerAddress" Member="Addresses" ThisKey="CustomerId" OtherKey="CustomerId" Type="CustomerAddress" />

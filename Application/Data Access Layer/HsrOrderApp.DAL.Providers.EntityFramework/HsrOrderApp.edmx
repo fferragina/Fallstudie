@@ -77,6 +77,7 @@
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="15" />
           <Property Name="Version" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="OrderDetails">
           <Key>
@@ -309,6 +310,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
           <Property Name="Version" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Orders" Relationship="HsrOrderAppModel.FK_Orders_Customers" FromRole="Customers" ToRole="Orders" />
           <NavigationProperty Name="User" Relationship="HsrOrderAppModel.FK_Users_Customers" FromRole="Customers" ToRole="Users" />
           <NavigationProperty Name="Addresses" Relationship="HsrOrderAppModel.CustomerAddresses" FromRole="Customers" ToRole="Addresses" />
@@ -427,6 +429,7 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

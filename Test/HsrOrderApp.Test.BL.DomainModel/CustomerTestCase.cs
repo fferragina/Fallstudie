@@ -35,7 +35,7 @@ namespace HsrOrderApp.Test.BL.DomainModel
         public void Build()
         {
             customer = new Customer();
-            Helper.AssertEmptiness(customer, "CustomerId", "Name", "FirstName", "Orders", "Addresses");
+            Helper.AssertEmptiness(customer, "CustomerId", "Name", "FirstName", "Orders", "Addresses", "Title");
         }
 
         #endregion

@@ -304,7 +304,7 @@ namespace HsrOrderApp.UI.Mvc.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kunde.
+        ///   Looks up a localized string similar to Anrede.
         /// </summary>
         public static string CustomerDetailView_Title {
             get {

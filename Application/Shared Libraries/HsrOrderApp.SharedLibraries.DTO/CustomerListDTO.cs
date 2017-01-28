@@ -17,6 +17,7 @@ namespace HsrOrderApp.SharedLibraries.DTO
             this.FirstName = string.Empty;
             this.NumberOfTotalOrders = default(int);
             this.NumberOfOpenOrders = default(int);
+            this.Title = string.Empty; 
         }
 
         [DataMember]
@@ -34,6 +35,10 @@ namespace HsrOrderApp.SharedLibraries.DTO
         [DataMember]
         [RangeValidator(0, RangeBoundaryType.Inclusive, int.MaxValue, RangeBoundaryType.Ignore)]
         public int NumberOfOpenOrders { get; set; }
+
+        [DataMember]
+        [StringLengthValidator(1, 10)]
+        public string Title { get; set; }
 
         public string FullName
         {

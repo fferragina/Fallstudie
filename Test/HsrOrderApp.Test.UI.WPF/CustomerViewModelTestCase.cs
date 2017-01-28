@@ -89,7 +89,7 @@ namespace HsrOrderApp.Test.UI.WPF
         public void TestCustomerDetailModel()
         {
             AddressDTO addressDto = new AddressDTO() {Id = 1, AddressLine1 = "FakeStreet", PostalCode = "FakePostalCode", City = "FakeCity", Phone = "FakePhone", Email = "FakeEmail", Version = 0};
-            CustomerDTO dto = new CustomerDTO() {Id = 1, Name = "FakeUsername", FirstName = "FakeFirstname", Version = 1};
+            CustomerDTO dto = new CustomerDTO() {Id = 1, Name = "FakeUsername", FirstName = "FakeFirstname", Version = 1, Title = "Herr"};
             dto.Addresses.Add(addressDto);
 
             CustomerDetailViewModel customerDetailViewModel = new CustomerDetailViewModel(dto, false);

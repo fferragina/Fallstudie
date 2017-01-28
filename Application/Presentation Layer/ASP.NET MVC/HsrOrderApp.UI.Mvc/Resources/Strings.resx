@@ -199,7 +199,7 @@
     <value>Adressen</value>
   </data>
   <data name="CustomerDetailView_Title" xml:space="preserve">
-    <value>Kunde</value>
+    <value>Anrede</value>
   </data>
   <data name="CustomerViewModel_DisplayName" xml:space="preserve">
     <value>Kundenverwaltung</value>

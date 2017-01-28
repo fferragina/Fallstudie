@@ -74,6 +74,7 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories
 
                 dbCustomer.Name = customer.Name;
                 dbCustomer.FirstName = customer.FirstName;
+                dbCustomer.Title = customer.Title;
                 if (isNew)
                 {
                     db.AddToCustomerSet(dbCustomer);
