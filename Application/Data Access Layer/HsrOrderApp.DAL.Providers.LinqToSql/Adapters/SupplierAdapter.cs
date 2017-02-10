@@ -9,7 +9,7 @@ namespace HsrOrderApp.DAL.Providers.LinqToSql.Adapters
 {
     internal static class SupplierAdapter
     {
-        internal static BL.DomainModel.Supplier AdaptProduct(Supplier s)
+        internal static BL.DomainModel.Supplier AdaptSupplier(Supplier s)
         {
             BL.DomainModel.Supplier supplier = new BL.DomainModel.Supplier()
                                                  {

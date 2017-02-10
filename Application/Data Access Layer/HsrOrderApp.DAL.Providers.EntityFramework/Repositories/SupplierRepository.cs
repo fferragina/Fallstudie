@@ -96,12 +96,28 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories
 
         public IQueryable<BL.DomainModel.Supplier> GetAll()
         {
+            var Suppliers = from c in this.db.SuppliersSet.AsEnumerable()
+                           select SupplierAdapter.AdaptSupplier(c);
+
+            return Suppliers.AsQueryable();
             throw new NotImplementedException();
         }
 
         public BL.DomainModel.Supplier GetById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var products = from c in this.db.SuppliersSet.AsEnumerable()
+                               where c.SupplierId == id
+                               select SupplierAdapter.AdaptSupplier(c);
+
+                return products.First();
+            }
+            catch (ArgumentNullException ex)
+            {
+                if (ExceptionPolicy.HandleException(ex, "DA Policy")) throw;
+                return new MissingSupplier();
+            }
         }
     }
 }

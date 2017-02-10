@@ -90,12 +90,27 @@ namespace HsrOrderApp.DAL.Providers.LinqToSql.Repositories
 
         public IQueryable<BL.DomainModel.Supplier> GetAll()
         {
-            throw new NotImplementedException();
+            var suppliers = from p in this.db.Suppliers
+                           select SupplierAdapter.AdaptSupplier(p);
+
+            return suppliers; throw new NotImplementedException();
         }
 
         public BL.DomainModel.Supplier GetById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var suppliers = from p in this.db.Suppliers
+                               where p.SupplierId == id
+                               select SupplierAdapter.AdaptSupplier(p);
+
+                return suppliers.First();
+            }
+            catch (ArgumentNullException ex)
+            {
+                if (ExceptionPolicy.HandleException(ex, "DA Policy")) throw;
+                return new MissingSupplier();
+            }
         }
     }
 }

@@ -33,21 +33,21 @@ namespace HsrOrderApp.BL.BusinessComponents
             return supplier;
         }
 
-        public IQueryable<Supplier> GetSuppliersByCriteria(SupplierSearchType searchType, string Name)
+        public IQueryable<Supplier> GetSuppliersByCriteria(SupplierSearchType searchType, string name)
         {
-            IQueryable<Supplier> products = null;
+            IQueryable<Supplier> suppliers = null;
 
             switch (searchType)
             {
                 case SupplierSearchType.None:
-                    products = rep.GetAll();
+                    suppliers = rep.GetAll();
                     break;
                 case SupplierSearchType.ByName:
-                    products = rep.GetAll().Where(cu => cu.Name == Name);
+                    suppliers = rep.GetAll().Where(cu => cu.Name == name);
                     break;
             }
 
-            return products;
+            return suppliers;
         }
 
 
