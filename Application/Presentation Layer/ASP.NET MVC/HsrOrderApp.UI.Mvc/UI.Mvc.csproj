@@ -210,6 +210,7 @@
     <Compile Include="App_Start\WcfUserValidator.cs" />
     <Compile Include="App_Start\WcfUserStore.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\OrderDetailController.cs" />
@@ -230,6 +231,7 @@
     <Compile Include="Models\Base\ListViewModelBase.cs" />
     <Compile Include="Models\Base\ViewModelBase.cs" />
     <Compile Include="Models\AddressViewModel.cs" />
+    <Compile Include="Models\SupplierViewModel.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\OrderDetailViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
@@ -371,6 +373,12 @@
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Supplier\_SupplierFieldList.cshtml" />
+    <Content Include="Views\Supplier\_SupplierItemList.cshtml" />
+    <Content Include="Views\Supplier\Create.cshtml" />
+    <Content Include="Views\Supplier\Details.cshtml" />
+    <Content Include="Views\Supplier\Edit.cshtml" />
+    <Content Include="Views\Supplier\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

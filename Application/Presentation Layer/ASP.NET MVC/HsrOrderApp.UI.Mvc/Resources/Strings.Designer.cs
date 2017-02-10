@@ -1015,7 +1015,7 @@ namespace HsrOrderApp.UI.Mvc.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lieferant.
+        ///   Looks up a localized string similar to Lieferanten.
         /// </summary>
         public static string SupplierDetailView_Title {
             get {
@@ -1062,6 +1062,15 @@ namespace HsrOrderApp.UI.Mvc.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Bearbeiten Sie die Lieferanten.
         /// </summary>
+        public static string SupplierView_Decription {
+            get {
+                return ResourceManager.GetString("SupplierView_Decription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bearbeiten Sie die Lieferanten.
+        /// </summary>
         public static string SupplierView_Description {
             get {
                 return ResourceManager.GetString("SupplierView_Description", resourceCulture);
@@ -1092,6 +1101,15 @@ namespace HsrOrderApp.UI.Mvc.Resources {
         public static string SupplierView_PreferredSupplierFlag {
             get {
                 return ResourceManager.GetString("SupplierView_PreferredSupplierFlag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lieferantenverwaltung.
+        /// </summary>
+        public static string SupplierView_Title {
+            get {
+                return ResourceManager.GetString("SupplierView_Title", resourceCulture);
             }
         }
         

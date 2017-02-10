@@ -332,6 +332,84 @@ namespace HsrOrderApp.UI.PresentationLogic
 
         #endregion
 
+        #region Supplier
+
+        public SupplierDTO GetSupplierById(int id)
+        {
+            try
+            {
+                GetSupplierRequest request = new GetSupplierRequest();
+                request.Id = id;
+                GetSupplierResponse response = Service.GetSupplierById(request);
+                return response.Supplier;
+            }
+            catch (Exception ex)
+            {
+                if (ExceptionPolicy.HandleException(ex, "PL Policy")) throw;
+                return new SupplierDTO();
+            }
+        }
+
+        public IList<SupplierDTO> GetSuppliersByName(string name)
+        {
+            return getSuppliers(SupplierSearchType.ByName, name, default(string));
+        }
+
+        public IList<SupplierDTO> GetAllSuppliers()
+        {
+            return getSuppliers(SupplierSearchType.None, default(string), default(string));
+        }
+
+        public void StoreSupplier(SupplierDTO supplier)
+        {
+            try
+            {
+                StoreSupplierRequest request = new StoreSupplierRequest();
+                request.Supplier = supplier;
+                StoreSupplierResponse response = Service.StoreSupplier(request);
+                supplier.Id = response.Id;
+            }
+            catch (Exception ex)
+            {
+                if (ExceptionPolicy.HandleException(ex, "PL Policy")) throw;
+            }
+        }
+
+        public void DeleteSupplier(int supplierId)
+        {
+            try
+            {
+                DeleteSupplierRequest request = new DeleteSupplierRequest();
+                request.Id = supplierId;
+                DeleteSupplierResponse response = Service.DeleteSupplier(request);
+            }
+            catch (Exception ex)
+            {
+                if (ExceptionPolicy.HandleException(ex, "PL Policy")) throw;
+            }
+        }
+
+        
+        private IList<SupplierDTO> getSuppliers(SupplierSearchType searchType, string name)
+        {
+            try
+            {
+                GetSuppliersRequest request = new GetSuppliersRequest();
+                request.SearchType = searchType;
+                request.SupplierName = name;
+                GetSuppliersResponse response = Service.GetSuppliersByCriteria(request);
+                return response.Suppliers;
+            }
+            catch (Exception ex)
+            {
+                if (ExceptionPolicy.HandleException(ex, "PL Policy")) throw;
+                return new List<SupplierDTO>();
+            }
+        }
+
+        #endregion
+
+
         #region Security
 
         public CurrentUserDTO GetCurrentUser()

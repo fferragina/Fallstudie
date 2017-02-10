@@ -375,6 +375,12 @@
   <data name="ProductView_Title" xml:space="preserve">
     <value>Produktverwaltung</value>
   </data>
+  <data name="SupplierView_Decription" xml:space="preserve">
+    <value>Bearbeiten Sie die Lieferanten</value>
+  </data>
+  <data name="SupplierView_Title" xml:space="preserve">
+    <value>Lieferantenverwaltung</value>
+  </data>
   <data name="RoleDetailViewModel_DisplayName" xml:space="preserve">
     <value>Rolle auswählen</value>
   </data>
@@ -415,7 +421,7 @@
     <value>Lieferantenkonditionen</value>
   </data>
   <data name="SupplierDetailView_Title" xml:space="preserve">
-    <value>Lieferant</value>
+    <value>Lieferanten</value>
   </data>
   <data name="SupplierViewModel_DisplayName" xml:space="preserve">
     <value>Lieferantenverwaltung</value>

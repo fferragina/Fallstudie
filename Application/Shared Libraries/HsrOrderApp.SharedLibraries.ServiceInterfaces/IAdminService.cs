@@ -63,7 +63,6 @@ namespace HsrOrderApp.SharedLibraries.ServiceInterfaces
 
         #endregion
 
-
         #region Product
 
         [OperationContract]
@@ -89,6 +88,35 @@ namespace HsrOrderApp.SharedLibraries.ServiceInterfaces
         [OperationContract]
         [FaultContract(typeof (ServiceFault))]
         [FaultContract(typeof (ValidationFault))]
+        GetEstimatedDeliveryTimeResponse GetEstimatedDeliveryTime(GetEstimatedDeliveryTimeRequest request);
+
+        #endregion
+
+        #region Supplier
+
+        [OperationContract]
+        [FaultContract(typeof(ServiceFault))]
+        [FaultContract(typeof(ValidationFault))]
+        GetSupplierResponse GetSupplierById(GetSupplierRequest request);
+
+        [OperationContract]
+        [FaultContract(typeof(ServiceFault))]
+        [FaultContract(typeof(ValidationFault))]
+        GetSuppliersResponse GetSuppliersByCriteria(GetSuppliersRequest request);
+
+        [OperationContract]
+        [FaultContract(typeof(ServiceFault))]
+        [FaultContract(typeof(ValidationFault))]
+        StoreSupplierResponse StoreSupplier(StoreSupplierRequest request);
+
+        [OperationContract]
+        [FaultContract(typeof(ServiceFault))]
+        [FaultContract(typeof(ValidationFault))]
+        DeleteSupplierResponse DeleteSupplier(DeleteSupplierRequest request);
+
+        [OperationContract]
+        [FaultContract(typeof(ServiceFault))]
+        [FaultContract(typeof(ValidationFault))]
         GetEstimatedDeliveryTimeResponse GetEstimatedDeliveryTime(GetEstimatedDeliveryTimeRequest request);
 
         #endregion

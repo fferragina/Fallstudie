@@ -185,6 +185,73 @@ namespace HsrOrderApp.SL.AdminService
 
         #endregion
 
+        #region Supplier
+        [PrincipalPermission(SecurityAction.Demand, Role = Roles.STAFF)]
+        public GetSupplierResponse GetSupplierById(GetSupplierRequest request)
+        {
+            GetSupplierResponse response = new GetSupplierResponse();
+            SupplierBusinessComponent bc = DependencyInjectionHelper.GetSupplierBusinessComponent();
+
+            Supplier product = bc.GetSupplierById(request.Id);
+            response.Supplier = SupplierAdapter.SupplierToDto(product);
+
+            return response;
+        }
+
+        [PrincipalPermission(SecurityAction.Demand, Role = Roles.STAFF)]
+        public GetSuppliersResponse GetSuppliersByCriteria(GetSuppliersRequest request)
+        {
+            GetSuppliersResponse response = new GetSuppliersResponse();
+            SupplierBusinessComponent bc = DependencyInjectionHelper.GetSupplierBusinessComponent();
+
+            IQueryable<Supplier> products = bc.GetSuppliersByCriteria(request.SearchType, request.Category, request.SupplierName);
+            response.Suppliers = SupplierAdapter.SuppliersToDtos(products);
+
+            return response;
+        }
+
+        [PrincipalPermission(SecurityAction.Demand, Role = Roles.STAFF)]
+        public StoreSupplierResponse StoreSupplier(StoreSupplierRequest request)
+        {
+            StoreSupplierResponse response = new StoreSupplierResponse();
+            SupplierBusinessComponent bc = DependencyInjectionHelper.GetSupplierBusinessComponent();
+
+            Supplier product = SupplierAdapter.DtoToSupplier(request.Supplier);
+            response.Id = bc.StoreSupplier(product);
+
+            return response;
+        }
+
+        [PrincipalPermission(SecurityAction.Demand, Role = Roles.STAFF)]
+        public DeleteSupplierResponse DeleteSupplier(DeleteSupplierRequest request)
+        {
+            DeleteSupplierResponse response = new DeleteSupplierResponse();
+            SupplierBusinessComponent bc = DependencyInjectionHelper.GetSupplierBusinessComponent();
+
+            bc.DeleteSupplier(request.Id);
+
+            return response;
+        }
+
+        [PrincipalPermission(SecurityAction.Demand, Role = Roles.STAFF)]
+        public GetEstimatedDeliveryTimeResponse GetEstimatedDeliveryTime(GetEstimatedDeliveryTimeRequest request)
+        {
+            GetEstimatedDeliveryTimeResponse response = new GetEstimatedDeliveryTimeResponse();
+            SupplierBusinessComponent bc = DependencyInjectionHelper.GetSupplierBusinessComponent();
+
+            int unitsAvailable = default(int);
+            int estimatedDeliveryTime = -1;
+
+            bc.GetEstimatedDeliveryTime(request.Id, out unitsAvailable, out estimatedDeliveryTime);
+            response.EstimatedDeliveryTime = estimatedDeliveryTime;
+            response.UnitsAvailable = unitsAvailable;
+
+            return response;
+        }
+
+        #endregion
+
+
         #region Security
 
         public GetCurrentUserResponse GetCurrentUser(GetCurrentUserRequest request)
