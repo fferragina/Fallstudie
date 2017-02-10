@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HsrOrderApp" Class="HsrOrderAppDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=LENOVO\SQLEXPRESS;Initial Catalog=HsrOrderApp;Integrated Security=True" SettingsObjectName="HsrOrderApp.DAL.Providers.LinqToSql.Properties.Settings" SettingsPropertyName="HsrOrderAppConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=HSR-7;Initial Catalog=HsrOrderApp;Integrated Security=True" SettingsObjectName="HsrOrderApp.DAL.Providers.LinqToSql.Properties.Settings" SettingsPropertyName="HsrOrderAppConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Roles" Member="Roles">
     <Type Name="Role">
       <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -27,6 +27,7 @@
       <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
       <Association Name="Address_CustomerAddress" Member="CustomerAddresses" ThisKey="AddressId" OtherKey="AddressId" Type="CustomerAddress" />
+      <Association Name="Address_SupplierAddress" Member="SupplierAddresses" ThisKey="AddressId" OtherKey="AddressId" Type="SupplierAddress" />
     </Type>
   </Table>
   <Table Name="dbo.OrderDetails" Member="OrderDetails">
@@ -64,6 +65,7 @@
       <Column Name="UnitsOnStock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
       <Association Name="Product_OrderDetail" Member="OrderDetails" ThisKey="ProductId" OtherKey="ProductId" Type="OrderDetail" />
+      <Association Name="Product_SupplierCondition" Member="SupplierConditions" ThisKey="ProductId" OtherKey="ProductId" Type="SupplierCondition" />
     </Type>
   </Table>
   <Table Name="dbo.Customers" Member="Customers">
@@ -95,6 +97,44 @@
       <Column Name="AddressId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="Address_CustomerAddress" Member="Address" ThisKey="AddressId" OtherKey="AddressId" Type="Address" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="Customer_CustomerAddress" Member="Customer" ThisKey="CustomerId" OtherKey="CustomerId" Type="Customer" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Supplier" Member="Suppliers">
+    <Type Name="Supplier">
+      <Column Name="SupplierId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AccountNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreditRating" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PreferredSupplierFlag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ActiveFlag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PurchasingWebServiceURL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Association Name="Supplier_SupplierCondition" Member="SupplierConditions" ThisKey="SupplierId" OtherKey="SupplierId" Type="SupplierCondition" />
+      <Association Name="Supplier_SupplierAddress" Member="SupplierAddresses" ThisKey="SupplierId" OtherKey="SupplierId" Type="SupplierAddress" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SupplierConditions" Member="SupplierConditions">
+    <Type Name="SupplierCondition">
+      <Column Name="SupplierConditionId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AverageLeadTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StandardPrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="LastReceiptCost" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="LastReceiptDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MinOrderQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaxOrderQty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Association Name="Product_SupplierCondition" Member="Product" ThisKey="ProductId" OtherKey="ProductId" Type="Product" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Supplier_SupplierCondition" Member="Supplier" ThisKey="SupplierId" OtherKey="SupplierId" Type="Supplier" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SupplierAddresses" Member="SupplierAddresses">
+    <Type Name="SupplierAddress">
+      <Column Name="SupplierId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AddressId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Address_SupplierAddress" Member="Address" ThisKey="AddressId" OtherKey="AddressId" Type="Address" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Supplier_SupplierAddress" Member="Supplier" ThisKey="SupplierId" OtherKey="SupplierId" Type="Supplier" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>

@@ -82,8 +82,12 @@
     <Compile Include="Adapters\AddressAdapter.cs" />
     <Compile Include="Adapters\CustomerAdapter.cs" />
     <Compile Include="Adapters\OrderAdapter.cs" />
+    <Compile Include="Adapters\SupplierAdapter.cs" />
     <Compile Include="Adapters\ProductAdapter.cs" />
     <Compile Include="Adapters\SecurityAdapter.cs" />
+    <Compile Include="HsrOrderApp.cs">
+      <DependentUpon>HsrOrderApp.dbml</DependentUpon>
+    </Compile>
     <Compile Include="HsrOrderApp.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -96,6 +100,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Repositories\AddressRepository.cs" />
+    <Compile Include="Repositories\SupplierRepository.cs" />
     <Compile Include="Repositories\CustomerRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
