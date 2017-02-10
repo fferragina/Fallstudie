@@ -352,12 +352,12 @@ namespace HsrOrderApp.UI.PresentationLogic
 
         public IList<SupplierDTO> GetSuppliersByName(string name)
         {
-            return getSuppliers(SupplierSearchType.ByName, name);
+            return GetSuppliers(SupplierSearchType.ByName, name);
         }
 
         public IList<SupplierDTO> GetAllSuppliers()
         {
-            return getSuppliers(SupplierSearchType.None, default(string));
+            return GetSuppliers(SupplierSearchType.None, default(string));
         }
 
         public void StoreSupplier(SupplierDTO supplier)
@@ -390,7 +390,7 @@ namespace HsrOrderApp.UI.PresentationLogic
         }
 
         
-        private IList<SupplierDTO> getSuppliers(SupplierSearchType searchType, string name)
+        private IList<SupplierDTO> GetSuppliers(SupplierSearchType searchType, string name)
         {
             try
             {

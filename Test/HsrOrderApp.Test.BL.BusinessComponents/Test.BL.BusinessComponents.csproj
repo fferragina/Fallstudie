@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SupplierBusinessComponentTestCase.cs" />
     <Compile Include="SecurityBusinessComponentTestCase.cs" />
     <Compile Include="ProductBusinessComponentTestCase.cs" />
     <Compile Include="CustomerBusinessComponentTestCase.cs" />

@@ -32,7 +32,7 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories
         {
             try
             {
-                string setname = "SuppliersSet";
+                string setname = "SupplierSet";
                 Supplier dbSupplier;
 
                 bool isNew = false;
@@ -51,7 +51,7 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories
                 dbSupplier.Name = supplier.Name;
                 if (isNew)
                 {
-                    db.AddToSuppliersSet(dbSupplier);
+                    db.AddToSupplierSet(dbSupplier);
                 }
                 db.SaveChanges();
 
@@ -67,7 +67,7 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories
 
         public void DeleteSupplier(int id)
         {
-            Supplier cu = db.SuppliersSet.First(c => c.SupplierId == id);
+            Supplier cu = db.SupplierSet.First(c => c.SupplierId == id);
             if (cu != null)
             {
                 db.DeleteObject(cu);
@@ -81,7 +81,7 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories
             Address dbAddress = rep.SaveAddressInternal(address);
             if (address.IsNew)
             {
-                Supplier supplier = db.SuppliersSet.First(c => c.SupplierId == forThisSupplier.SupplierId);
+                Supplier supplier = db.SupplierSet.First(c => c.SupplierId == forThisSupplier.SupplierId);
                 supplier.Addresses.Add(dbAddress);
                 db.SaveChanges();
             }
@@ -96,22 +96,21 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories
 
         public IQueryable<BL.DomainModel.Supplier> GetAll()
         {
-            var Suppliers = from c in this.db.SuppliersSet.AsEnumerable()
+            var suppliers = from c in this.db.SupplierSet.AsEnumerable()
                            select SupplierAdapter.AdaptSupplier(c);
 
-            return Suppliers.AsQueryable();
-            throw new NotImplementedException();
+            return suppliers.AsQueryable();
         }
 
         public BL.DomainModel.Supplier GetById(int id)
         {
             try
             {
-                var products = from c in this.db.SuppliersSet.AsEnumerable()
+                var suppliers = from c in this.db.SupplierSet.AsEnumerable()
                                where c.SupplierId == id
                                select SupplierAdapter.AdaptSupplier(c);
 
-                return products.First();
+                return suppliers.First();
             }
             catch (ArgumentNullException ex)
             {

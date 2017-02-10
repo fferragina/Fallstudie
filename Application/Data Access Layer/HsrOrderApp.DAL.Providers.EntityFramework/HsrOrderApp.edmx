@@ -395,19 +395,19 @@
             <End Role="Roles" EntitySet="RoleSet" />
             <End Role="Users" EntitySet="UserSet" />
           </AssociationSet>
-          <EntitySet Name="SuppliersSet" EntityType="HsrOrderAppModel.Supplier" />
+          <EntitySet Name="SupplierSet" EntityType="HsrOrderAppModel.Supplier" />
           <EntitySet Name="SupplierConditionsSet" EntityType="HsrOrderAppModel.SupplierCondition" />
           <AssociationSet Name="FK_SupplierConditions_Product" Association="HsrOrderAppModel.FK_SupplierConditions_Product">
             <End Role="Product" EntitySet="ProductSet" />
             <End Role="SupplierCondition" EntitySet="SupplierConditionsSet" />
           </AssociationSet>
           <AssociationSet Name="FK_SupplierConditions_Suppliers" Association="HsrOrderAppModel.FK_SupplierConditions_Suppliers">
-            <End Role="Supplier" EntitySet="SuppliersSet" />
+            <End Role="Supplier" EntitySet="SupplierSet" />
             <End Role="SupplierCondition" EntitySet="SupplierConditionsSet" />
           </AssociationSet>
           <AssociationSet Name="SupplierAddresses" Association="HsrOrderAppModel.SupplierAddresses">
             <End Role="Address" EntitySet="AddressSet" />
-            <End Role="Supplier" EntitySet="SuppliersSet" />
+            <End Role="Supplier" EntitySet="SupplierSet" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Address">
@@ -721,7 +721,7 @@
               <ScalarProperty Name="UserId" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="SuppliersSet">
+          <EntitySetMapping Name="SupplierSet">
             <EntityTypeMapping TypeName="HsrOrderAppModel.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -781,13 +781,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="HsrOrderApp" xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
-        <EntityTypeShape EntityType="HsrOrderAppModel.Address" Width="1.5" PointX="0.75" PointY="5" Height="2.9417936197916656" IsExpanded="true" />
-        <EntityTypeShape EntityType="HsrOrderAppModel.Customer" Width="1.5" PointX="3" PointY="3.5" Height="2.3648893229166674" IsExpanded="true" />
-        <EntityTypeShape EntityType="HsrOrderAppModel.OrderDetail" Width="1.5" PointX="7.5" PointY="6.5" Height="2.1725878906249987" IsExpanded="true" />
-        <EntityTypeShape EntityType="HsrOrderAppModel.Order" Width="1.5" PointX="5.25" PointY="6.375" Height="2.3648893229166656" IsExpanded="true" />
-        <EntityTypeShape EntityType="HsrOrderAppModel.Product" Width="1.5" PointX="6.25" PointY="10" Height="2.9417936197916656" IsExpanded="true" />
-        <EntityTypeShape EntityType="HsrOrderAppModel.Role" Width="1.5" PointX="3" PointY="0.75" Height="1.787985026041667" IsExpanded="true" />
-        <EntityTypeShape EntityType="HsrOrderAppModel.User" Width="1.5" PointX="5.25" PointY="2.5" Height="2.172587890625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HsrOrderAppModel.Address" Width="1.5" PointX="0.75" PointY="3.375" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="HsrOrderAppModel.Customer" Width="1.5" PointX="2.875" PointY="3" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="HsrOrderAppModel.OrderDetail" Width="1.5" PointX="7.5" PointY="4.625" Height="2.1725878906249987" IsExpanded="true" />
+        <EntityTypeShape EntityType="HsrOrderAppModel.Order" Width="1.5" PointX="5.375" PointY="4.625" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="HsrOrderAppModel.Product" Width="1.5" PointX="5.25" PointY="7.625" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="HsrOrderAppModel.Role" Width="1.5" PointX="7.625" PointY="2.375" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="HsrOrderAppModel.User" Width="1.5" PointX="5.25" PointY="2.25" Height="2.172587890625" IsExpanded="true" />
         <AssociationConnector Association="HsrOrderAppModel.FK_Orders_Customers" ManuallyRouted="false">
           <ConnectorPoint PointX="3.75" PointY="5.8648893229166674" />
           <ConnectorPoint PointX="3.75" PointY="7.5574446614583328" />
@@ -810,8 +810,8 @@
           <ConnectorPoint PointX="4.5" PointY="1.6249995" />
           <ConnectorPoint PointX="6" PointY="1.6249995" />
           <ConnectorPoint PointX="6" PointY="2.5" /></AssociationConnector>
-        <EntityTypeShape EntityType="HsrOrderAppModel.Supplier" Width="1.5" PointX="3" PointY="7" />
-        <EntityTypeShape EntityType="HsrOrderAppModel.SupplierCondition" Width="1.5" PointX="8.5" PointY="10.25" />
+        <EntityTypeShape EntityType="HsrOrderAppModel.Supplier" Width="1.5" PointX="0.75" PointY="7.25" />
+        <EntityTypeShape EntityType="HsrOrderAppModel.SupplierCondition" Width="1.5" PointX="2.875" PointY="6.75" />
         <AssociationConnector Association="HsrOrderAppModel.FK_SupplierConditions_Product" />
         <AssociationConnector Association="HsrOrderAppModel.FK_SupplierConditions_Suppliers" />
         <AssociationConnector Association="HsrOrderAppModel.SupplierAddresses" />

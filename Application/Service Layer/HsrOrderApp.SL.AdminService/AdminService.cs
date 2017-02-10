@@ -209,9 +209,7 @@ namespace HsrOrderApp.SL.AdminService
 
             return response;
         }
-
-
-
+        
         [PrincipalPermission(SecurityAction.Demand, Role = Roles.STAFF)]
         public StoreSupplierResponse StoreSupplier(StoreSupplierRequest request)
         {
