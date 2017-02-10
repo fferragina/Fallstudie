@@ -352,12 +352,12 @@ namespace HsrOrderApp.UI.PresentationLogic
 
         public IList<SupplierDTO> GetSuppliersByName(string name)
         {
-            return getSuppliers(SupplierSearchType.ByName, name, default(string));
+            return getSuppliers(SupplierSearchType.ByName, name);
         }
 
         public IList<SupplierDTO> GetAllSuppliers()
         {
-            return getSuppliers(SupplierSearchType.None, default(string), default(string));
+            return getSuppliers(SupplierSearchType.None, default(string));
         }
 
         public void StoreSupplier(SupplierDTO supplier)
@@ -396,7 +396,7 @@ namespace HsrOrderApp.UI.PresentationLogic
             {
                 GetSuppliersRequest request = new GetSuppliersRequest();
                 request.SearchType = searchType;
-                request.SupplierName = name;
+                request.Name = name;
                 GetSuppliersResponse response = Service.GetSuppliersByCriteria(request);
                 return response.Suppliers;
             }
@@ -408,7 +408,6 @@ namespace HsrOrderApp.UI.PresentationLogic
         }
 
         #endregion
-
 
         #region Security
 

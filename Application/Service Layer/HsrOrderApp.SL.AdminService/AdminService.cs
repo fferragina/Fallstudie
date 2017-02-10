@@ -192,8 +192,8 @@ namespace HsrOrderApp.SL.AdminService
             GetSupplierResponse response = new GetSupplierResponse();
             SupplierBusinessComponent bc = DependencyInjectionHelper.GetSupplierBusinessComponent();
 
-            Supplier product = bc.GetSupplierById(request.Id);
-            response.Supplier = SupplierAdapter.SupplierToDto(product);
+            Supplier supplier = bc.GetSupplierById(request.Id);
+            response.Supplier = SupplierAdapter.SupplierToDto(supplier);
 
             return response;
         }
@@ -204,11 +204,13 @@ namespace HsrOrderApp.SL.AdminService
             GetSuppliersResponse response = new GetSuppliersResponse();
             SupplierBusinessComponent bc = DependencyInjectionHelper.GetSupplierBusinessComponent();
 
-            IQueryable<Supplier> products = bc.GetSuppliersByCriteria(request.SearchType, request.Category, request.SupplierName);
-            response.Suppliers = SupplierAdapter.SuppliersToDtos(products);
+            IQueryable<Supplier> suppliers = bc.GetSuppliersByCriteria(request.SearchType, request.Name);
+            response.Suppliers = SupplierAdapter.SuppliersToDtos(suppliers);
 
             return response;
         }
+
+
 
         [PrincipalPermission(SecurityAction.Demand, Role = Roles.STAFF)]
         public StoreSupplierResponse StoreSupplier(StoreSupplierRequest request)
@@ -216,8 +218,8 @@ namespace HsrOrderApp.SL.AdminService
             StoreSupplierResponse response = new StoreSupplierResponse();
             SupplierBusinessComponent bc = DependencyInjectionHelper.GetSupplierBusinessComponent();
 
-            Supplier product = SupplierAdapter.DtoToSupplier(request.Supplier);
-            response.Id = bc.StoreSupplier(product);
+            Supplier supplier = SupplierAdapter.DtoToSupplier(request.Supplier);
+            response.Id = bc.StoreSupplier(supplier);
 
             return response;
         }
@@ -233,24 +235,7 @@ namespace HsrOrderApp.SL.AdminService
             return response;
         }
 
-        [PrincipalPermission(SecurityAction.Demand, Role = Roles.STAFF)]
-        public GetEstimatedDeliveryTimeResponse GetEstimatedDeliveryTime(GetEstimatedDeliveryTimeRequest request)
-        {
-            GetEstimatedDeliveryTimeResponse response = new GetEstimatedDeliveryTimeResponse();
-            SupplierBusinessComponent bc = DependencyInjectionHelper.GetSupplierBusinessComponent();
-
-            int unitsAvailable = default(int);
-            int estimatedDeliveryTime = -1;
-
-            bc.GetEstimatedDeliveryTime(request.Id, out unitsAvailable, out estimatedDeliveryTime);
-            response.EstimatedDeliveryTime = estimatedDeliveryTime;
-            response.UnitsAvailable = unitsAvailable;
-
-            return response;
-        }
-
         #endregion
-
 
         #region Security
 

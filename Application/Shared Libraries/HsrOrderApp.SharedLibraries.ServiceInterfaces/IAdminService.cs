@@ -114,11 +114,6 @@ namespace HsrOrderApp.SharedLibraries.ServiceInterfaces
         [FaultContract(typeof(ValidationFault))]
         DeleteSupplierResponse DeleteSupplier(DeleteSupplierRequest request);
 
-        [OperationContract]
-        [FaultContract(typeof(ServiceFault))]
-        [FaultContract(typeof(ValidationFault))]
-        GetEstimatedDeliveryTimeResponse GetEstimatedDeliveryTime(GetEstimatedDeliveryTimeRequest request);
-
         #endregion
 
         #region Security 
