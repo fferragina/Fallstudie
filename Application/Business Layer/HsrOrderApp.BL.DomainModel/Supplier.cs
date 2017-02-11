@@ -16,8 +16,8 @@ namespace HsrOrderApp.BL.DomainModel
             this.SupplierId = default(int);
             this.Name = string.Empty;
             this.AccountNumber = string.Empty;
-            this.Addresses = new List<Address>().AsQueryable();
-            this.Products = new List<Product>().AsQueryable();
+ //           this.Addresses = new List<Address>().AsQueryable();
+ //           this.Products = new List<Product>().AsQueryable();
             this.CreditRating = string.Empty;
             this.PreferredSupplierFlag = false;
             this.ActiveFlag = false;

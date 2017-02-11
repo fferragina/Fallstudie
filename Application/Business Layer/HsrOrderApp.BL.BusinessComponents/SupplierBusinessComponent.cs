@@ -46,6 +46,10 @@ namespace HsrOrderApp.BL.BusinessComponents
                 case SupplierSearchType.ByName:
                     suppliers = rep.GetAll().Where(cu => cu.Name == name);
                     break;
+                default:
+                    suppliers = rep.GetAll();
+                    break;
+
             }
 
             return suppliers;
