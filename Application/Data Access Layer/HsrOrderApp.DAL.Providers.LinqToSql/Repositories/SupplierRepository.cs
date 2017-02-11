@@ -92,8 +92,7 @@ namespace HsrOrderApp.DAL.Providers.LinqToSql.Repositories
         {
             var suppliers = from p in this.db.Suppliers
                            select SupplierAdapter.AdaptSupplier(p);
-
-            return suppliers; throw new NotImplementedException();
+            return suppliers;
         }
 
         public BL.DomainModel.Supplier GetById(int id)

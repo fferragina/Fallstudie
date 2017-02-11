@@ -21,6 +21,7 @@ namespace HsrOrderApp.DAL.Providers.EntityFramework.Repositories.Adapters
                                                    {
                                                        SupplierId = c.SupplierId,
                                                        Name = c.Name,
+                                                       AccountNumber = c.AccountNumber,
                                                        CreditRating = c.CreditRating,
                                                        PreferredSupplierFlag = c.PreferredSupplierFlag,
                                                        ActiveFlag = c.ActiveFlag,
